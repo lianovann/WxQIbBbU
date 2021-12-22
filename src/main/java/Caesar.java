@@ -1,20 +1,19 @@
 import util.Input;
 
+import java.io.IOException;
+
 import static util.Cryptographer.*;
 
-public class Caesar {
+public class Caesar extends Input {
 
-    private String text;
-    private int step;
-
-    public void decrypt() {
-        userInput();
-        crypto(text, step, true);
+    public void decrypt() throws IOException {
+        super.input();
+        crypto(super.getText(), super.getStep(), true);
     }
 
-    public void encrypt() {
-        userInput();
-        crypto(text, step, false);
+    public void encrypt() throws IOException {
+        super.input();
+        crypto(super.getText(), super.getStep(), false);
     }
 
     private void crypto(String text, int step, boolean isLeftShift) {
@@ -26,12 +25,5 @@ public class Caesar {
             updateResult(c);
         }
         printResult(isLeftShift);
-    }
-
-    private void userInput() {
-        Input input = new Input();
-        input.input();
-        text = input.getText();
-        step = input.getStep();
     }
 }
